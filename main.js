@@ -1,5 +1,5 @@
 const fs = require('fs');
-const file = fs.readFileSync('./index.html').toString();
+const file = fs.readFileSync('./wiki.html').toString();
 
 var searchByTypeHTML = function (fileStr) {
   //tags are just the name, so for the parser, we'll need to make a list of all the element types, and then add every style element that has that tag.
@@ -38,16 +38,26 @@ var searchByTypeHTML = function (fileStr) {
           completeLine += ' ' + thisLineArr[wordIndex + i];
           i++;
         }
-          classes = getClass(completeLine);
+        let classTemp = getClass(completeLine);
+        for (let i = 0; i < classTemp.length; i++) {
+          if (classes.indexOf(classTemp[i]) === -1) {
+            classes.push(classTemp[i]);
+          }
+        }
         //for id's
-        } else if (word.slice(0, 2) === 'id') {
+      } else if (word.slice(0, 2) === 'id') {
         let completeLine = word;
         let i = 1;
         while (completeLine.charAt(completeLine.length - 1) !== '"') {
           completeLine += ' ' + thisLineArr[wordIndex + i];
           i++;
         }
-          ids = getId(completeLine);
+        let idTemps = getId(completeLine);
+        for (let i = 0; i < idTemps.length; i++) {
+          if (ids.indexOf(idTemps[i]) === -1) {
+            ids.push(idTemps[i]);
+          }
+        }
         }
       }
     }
@@ -55,6 +65,7 @@ var searchByTypeHTML = function (fileStr) {
   console.log('tags: ', tags);
   console.log('classes ', classes);
   console.log('ids ', ids);
+  return [tags, classes, ids];
 };
 function getClass (ele) {
   //get all of the classes

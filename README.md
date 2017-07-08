@@ -27,3 +27,4 @@ TODOS:
   return a list of the relevant style elements
 3.make a file writer that takes a list of styles and saves them in a file, in
   some order. then that file is exported to a predefined location
+4.check if there's a </ for tags
