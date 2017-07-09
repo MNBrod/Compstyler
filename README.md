@@ -20,11 +20,12 @@ Possible ideas:
   -webpack plugin
 
 TODOS:
-
-1.make a file parser that takes an HTML or React file, and can find all tags,
-  ids, and classes in the entire file, and return them in a list
 2.make a file parser that takes a css file and a list of tags/ids/classes and
   return a list of the relevant style elements
 3.make a file writer that takes a list of styles and saves them in a file, in
   some order. then that file is exported to a predefined location
 4.check if there's a </ for tags
+
+DONE:
+1.make a file parser that takes an HTML and can find all tags,
+  ids, and classes in the entire file, and return them in a list
