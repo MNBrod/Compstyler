@@ -1,4 +1,4 @@
-//const fs = require('fs');
+const fs = require('fs');
 //const fileStr = fs.readFileSync('./test.css').toString();
 //const neededStyles = require('./HTMLParser.js').output;
 
@@ -31,7 +31,8 @@ var formRegexArr = function (arr) {
   return result;
 };
 
-var parseCSS = function (fileAsString, styleStrings) {
+var parseCSS = function (fileName, styleStrings) {
+  let fileAsString = fs.readFileSync(fileName).toString();
   let regexArr = formRegexArr(styleStrings);
   let result = [];
   let fileArr = fileAsString.split('\n\n');

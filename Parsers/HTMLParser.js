@@ -1,4 +1,4 @@
-//const fs = require('fs');
+const fs = require('fs');
 //const file = fs.readFileSync('./wiki.html').toString();
 /**
  * Searches a string representaion of an HTML file for all Tags, Classes, and IDs.
@@ -7,10 +7,11 @@
  *    no excess spaces
  * @param {String} fileStr
  */
-function parseHTML (fileStr) {
-  var classes = [];
-  var tags = [];
-  var ids = [];
+function parseHTML(fileName, requiredStyles) {
+  let fileStr = fs.readFileSync(fileName).toString();
+  let classes = [] || requiredStyles[0];
+  let tags = [] || requiredStyles[1];
+  let ids = [] || requiredStyles[2];
   const fileLines = fileStr.split('\n');
   for (let lineIndex = 0; lineIndex < fileLines.length; lineIndex++) {
     const thisLineArr = fileLines[lineIndex].split(/[ >]/);
